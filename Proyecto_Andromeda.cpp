@@ -47,6 +47,10 @@ int main() {
     vector<Ambiente> lugares;
     vector<Jugador> Jugador1;
     vector<Jugador> Jugador2;
+    vector<Jugador> Jugador3;
+    vector<Jugador> Jugador4;
+    vector<Jugador> Jugador5;
+    vector<Jugador> Jugador6;
     
     //Razas predeterminadas
     razas.push_back({"Andromedanos",80,100,"Andromeda","Desconocida"});
@@ -54,8 +58,8 @@ int main() {
     razas.push_back({"UCABISTA",60,100,"Universitarios","Desconocida"});
 
     //Objetos predeterminados
-    objetos.push_back({"Pastilla anti-estres","Ataque",25,"No tiene",25,0 });
-    objetos.push_back({"Escudo","Defensa",0,"No tiene",0,40 });
+    objetos.push_back({"Espada","Ataque",25,"No tiene",25,0 });
+    objetos.push_back({"Pastilla anti-estres","Defensa",100,"No tiene",0,40 });
     objetos.push_back({"Botiquin","Supervivencia",60,"No tiene",0,0 });
     objetos.push_back({"Regulador de temperatura","Adaptación",0,"Gelidax",0,0 });
     
@@ -75,6 +79,7 @@ int main() {
         int parte_razas = 1;
         int parte_accesorios = 1;
         int parte_ambiente = 1;
+        system("cls");
         cout << "ELABORADO POR: DIEGO MORENO, ANDRES VIERA Y XAVIER LUIS" << endl;
         cout << "MENU PRINCIPAL" << endl;
         cout << "1.- Menu de razas" << endl;
@@ -320,7 +325,7 @@ int main() {
                 }
                 cout << endl;
 
-                cout << "MENU DE AMBIENTEs" << endl;
+                cout << "MENU DE AMBIENTES" << endl;
                 cout << "1.- Agregar Ambiente" << endl;
                 cout << "2.- Eliminar Ambiente" << endl;
                 cout << "3.- Modificar Ambiente" << endl;
