@@ -5,7 +5,9 @@
 
 using namespace std;
 
-struct Especies{
+/*ESTRUCTURAS*/
+
+struct Razas{
     string nombre;
     int Energia;
     int Salud; 
@@ -17,7 +19,7 @@ struct Accesorios {
     string Nombre;
     string Tipo;
     int Valor;
-    string Tipo2;
+    string Otro_Tipo;
     int Energia;
     int Contenedor;
 };
@@ -37,12 +39,15 @@ struct Ambiente {
 
 struct Jugador {
     string Nombre;
-    Especies Raza;
+    Razas Raza;
     Mochila Accesorios;
 };
 
+/*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
+
 int main() {
-    vector<Especies> razas;
+    vector<Razas> razas;
     vector<Accesorios> objetos;
     vector<Ambiente> lugares;
     vector<Jugador> Jugador1;
@@ -52,51 +57,56 @@ int main() {
     vector<Jugador> Jugador5;
     vector<Jugador> Jugador6;
     
-    //Razas predeterminadas
+    /*RAZAS PREDETERMINADAS*/
     razas.push_back({"Andromedanos",80,100,"Andromeda","Desconocida"});
     razas.push_back({"Humano",80,100,"Tierra","Desconocida"});
-    razas.push_back({"UCABISTA",60,100,"Universitarios","Desconocida"});
+    razas.push_back({"Georgianos",60,100,"Georgia","Desconocida"});
 
-    //Objetos predeterminados
-    objetos.push_back({"Espada","Ataque",25,"No tiene",25,0 });
+    /*OBJETOS PREDETERMINADOS*/
+    objetos.push_back({"Lanza","Ataque",25,"No tiene",25,0 });
     objetos.push_back({"Pastilla anti-estres","Defensa",100,"No tiene",0,40 });
     objetos.push_back({"Botiquin","Supervivencia",60,"No tiene",0,0 });
-    objetos.push_back({"Regulador de temperatura","Adaptación",0,"Gelidax",0,0 });
     
-    //Ambientes predeterminados
+    /*AMBIENTES PREDETERMINADOS*/
     lugares.push_back({"Tierra"});
     lugares.push_back({"Andromeda"});
     lugares.push_back({"Georgia"});
     
-    //Declaracion de Variables
+    /*DECLARACION DE VARIABLES*/
     string nombre_primer_personaje;
     int main = 1;
     
-    
+    //Inicio
     while(main==1) {
-        //Inicio y Menu
+        
+        //Menu Principal
         int opcion;
-        int parte_razas = 1;
-        int parte_accesorios = 1;
-        int parte_ambiente = 1;
-        system("cls");
+        int opciones_razas = 1;
+        int opciones_accesorios = 1;
+        int opciones_ambientes = 1;
+
+        cout << "INVASION EXTRATERRESTRE" << endl;
         cout << "ELABORADO POR: DIEGO MORENO, ANDRES VIERA Y XAVIER LUIS" << endl;
-        cout << "MENU PRINCIPAL" << endl;
-        cout << "1.- Menu de razas" << endl;
-        cout << "2.- Menu de accesorios" << endl;
-        cout << "3.- Menu de Ambientes" << endl;
-        cout << "4.- Salir" << endl;
-        cout << "¿Qué acción desea realizar?: ";
+        cout << "╔══════════════════════════════════════╗" << endl;
+        cout << "║           ** MENU PRINCIPAL **       ║" << endl;
+        cout << "║                                      ║" << endl;
+        cout << "║ 1. Menú de razas                     ║" << endl;
+        cout << "║ 2. Menú de accesorios                ║" << endl;
+        cout << "║ 3. Menú de Ambientes                 ║" << endl;
+        cout << "║ 4. Salir                             ║" << endl;
+        cout << "╚══════════════════════════════════════╝" << endl;
+        cout << "¿Qué acción deseas realizar?: " << endl;
         cin>> opcion;
         
         //Selector de Opciones
+        //Opcion invalida
         if((opcion<1) or (opcion>4)) {
             cout << "El número que ha seleccionado es invalido" << endl << endl;
         }
-        //Seleccion 1, razas
+        //Opcion 1, razas
         else if(opcion==1) {
-            while(parte_razas==1) {
-                int seleccion_raza;
+            while(opciones_razas==1) {
+                int seleccionar_raza;
                 cout << "Estas son las razas que participan: " << endl;
                 cout << " " <<endl;
 
@@ -104,19 +114,23 @@ int main() {
                     cout << i << ") " << razas[i].nombre << ", " << razas[i].Energia << ", " << razas[i].Salud << ", ";
                     cout << razas[i].Ambiente << ", " << razas[i].Fidelidad << endl;
                 }
-                cout << endl;
-                
-                cout << "MENU DE RAZAS" << endl;
-                cout << "1.- Agregar raza" << endl;
-                cout << "2.- Eliminar raza" << endl;
-                cout << "3.- Modificar raza" << endl;
-                cout << "4.- Volver" << endl << endl;
-                cout << "¿Qué acción quiere realizar?: ";
-                cin>> seleccion_raza;
+                cout << endl << endl;
+
+                cout << "╔══════════════════════════════════════╗" << endl;
+                cout << "║           ** MENU DE RAZAS **        ║" << endl;
+                cout << "║                                      ║" << endl;
+                cout << "║ 1. Agregar raza                      ║" << endl;
+                cout << "║ 2. Elimminar raza                    ║" << endl;
+                cout << "║ 3. Modificar raza                    ║" << endl;
+                cout << "║ 4. Volver                            ║" << endl;
+                cout << "╚══════════════════════════════════════╝" << endl;
+                cout << "¿Qué acción deseas realizar?: ";
+                cin>> seleccionar_raza;
+                cout << endl << endl;
                 
                 //Seleccion de opciones en Razas
                 //Seleccion 1
-                if(seleccion_raza == 1) {
+                if(seleccionar_raza == 1) {
                     string nuevo_nombre_raza = "";
                     int nueva_energia_raza = 0;
                     int nueva_salud_raza = 0;
@@ -132,7 +146,7 @@ int main() {
                     razas.push_back({nuevo_nombre_raza, nueva_energia_raza, nueva_salud_raza, nuevo_ambiente_raza, "Desconocida"});
                 }
                 //Seleccion 2
-                else if(seleccion_raza == 2) {
+                else if(seleccionar_raza == 2) {
                     int numero_eliminar_raza = 0;
                     cout << endl << "Ingresa el número de la raza que desea eliminar: ";
                     cin>> numero_eliminar_raza;
@@ -145,7 +159,7 @@ int main() {
                 }
 
                 //Seleccion 3
-                else if(seleccion_raza == 3) { // opción para modificar una raza
+                else if(seleccionar_raza == 3) { // opción para modificar una raza
                     int buscar_raza;
                     cout << "Ingrese el índice de la raza que desea modificar: ";
                     cin >> buscar_raza;
@@ -176,42 +190,46 @@ int main() {
                 }
 
                 //Seleccion 4
-                else if(seleccion_raza == 4) {
+                else if(seleccionar_raza == 4) {
                     cout << endl;
-                    parte_razas = 0;
+                    opciones_razas = 0;
                 }
                 //Seleccion invalida
                 else {
                     cout << endl << "El número que ha seleccionado es invalido" << endl << endl;
             }
     }}
-    //Seleccion 2 accesorios
+    //Opcion 2, accesorios
         else if(opcion==2) {
-            while(parte_accesorios == 1){
-                int seleccion_accesorio;
-                int seleccion_tipo_2 = 0;
+            while(opciones_accesorios == 1){
+                int selecciones_accesorio;
+                int selecciones_otro_tipo = 0;
                 cout << "Estos son los accesorios disponibles" << endl;
                 cout << " " << endl;
                 for (int i=0; i<objetos.size(); ++i){
                     cout << i << ") " << objetos[i].Nombre << ", " << objetos[i].Tipo << ", " ;
-                    cout << objetos[i].Valor << ", " << objetos[i].Tipo2 << ", " << objetos[i].Energia << ", " << objetos[i].Contenedor << endl;  
+                    cout << objetos[i].Valor << ", " << objetos[i].Otro_Tipo << ", " << objetos[i].Energia << ", " << objetos[i].Contenedor << endl;  
                 }
-                cout << endl;
+                cout << endl << endl;
                 //Menu Accesorios
-                cout << "MENU DE ACCESORIO" << endl;
-                cout << "1.- Agregar Accesorio" << endl;
-                cout << "2.- Eliminar Accesorio" << endl;
-                cout << "3.- Modificar Accesorio" << endl;
-                cout << "4.- Volver" << endl << endl;
-                cout << "¿Qué acción quiere realizar?: ";
-                cin>> seleccion_accesorio;
+                cout << "╔══════════════════════════════════════╗" << endl;
+                cout << "║       ** MENU DE ACCESORIOS **       ║" << endl;
+                cout << "║                                      ║" << endl;
+                cout << "║ 1. Agregar Accesorio                 ║" << endl;
+                cout << "║ 2. Eliminar Accesorio                ║" << endl;
+                cout << "║ 3. Modificar Accesorio               ║" << endl;
+                cout << "║ 4. Volver                            ║" << endl;
+                cout << "╚══════════════════════════════════════╝" << endl;
+                cout << "¿Qué acción deseas realizar?: ";
+                cin>> selecciones_accesorio;
+                cout << endl << endl;
                 //Seleccion de opciones en Accesorios
                 //Seleccion 1 (Agregar accesorio)
-                if(seleccion_accesorio == 1) {
+                if(selecciones_accesorio == 1) {
                     string nuevo_nombre_accesorio = "";
                     string nuevo_tipo_accesorio = "";
                     int nuevo_valor_accesorio = 0;
-                    string nuevo_tipo2_accesorio = "";
+                    string nuevo_otro_tipo_accesorio = "";
                     int nueva_energia_accesorio = 0;
                     int nuevo_contenedor_accesorio = 0;
                     cout << "Ingrese el nombre del accesorio: ";
@@ -226,22 +244,22 @@ int main() {
                     cin>> nuevo_contenedor_accesorio;
                     cout << endl << "¿Su accesorio hace uso de un segundo tipo?" << endl <<  "Si es de adaptación indica el ambiente que adapta y si es de supervivencia indica si restaura energía o vida.";
                     cout << endl << "1.- Si" << endl << "2.- No" << endl;
-                    cin>> seleccion_accesorio;
-                    if(seleccion_tipo_2 == 1) {
+                    cin>> selecciones_accesorio;
+                    if(selecciones_otro_tipo == 1) {
                         cout << endl << "ingrese el segundo tipo del accesorio: ";
-                        cin >> nuevo_tipo2_accesorio;
+                        cin >> nuevo_otro_tipo_accesorio;
                     }
-                    else if(seleccion_tipo_2 == 2) {
-                        nuevo_tipo2_accesorio = "No Tiene";
+                    else if(selecciones_otro_tipo == 2) {
+                        nuevo_otro_tipo_accesorio = "No Tiene";
                     }
                     else {
                         cout << endl << "El número ingresado es invalido, se asignara como segundo tipo (no tiene)";
-                        nuevo_tipo2_accesorio = "No Tiene";
+                        nuevo_otro_tipo_accesorio = "No Tiene";
                     }
-                    objetos.push_back({nuevo_nombre_accesorio, nuevo_tipo_accesorio, nuevo_valor_accesorio, nuevo_tipo2_accesorio, nueva_energia_accesorio, nuevo_contenedor_accesorio});
+                    objetos.push_back({nuevo_nombre_accesorio, nuevo_tipo_accesorio, nuevo_valor_accesorio, nuevo_otro_tipo_accesorio, nueva_energia_accesorio, nuevo_contenedor_accesorio});
                 }
                 //seleccion 2 (Eliminar accesorio)
-                else if(seleccion_accesorio == 2){
+                else if(selecciones_accesorio == 2){
                     int accesorio_eliminar;
                     cout << "Ingrese el numero del accesorio que desea eliminar: ";
                     cin >> accesorio_eliminar;
@@ -254,7 +272,7 @@ int main() {
                         cout << "El numero que ha colocado no es valido" << endl << endl;
                     }
                 }
-                else if(seleccion_accesorio == 3){//seleccion 3 (modificar accesorios)
+                else if(selecciones_accesorio == 3){//seleccion 3 (modificar accesorios)
                     int accesorio_modificar;
                     cout << "Ingrese el numero del accesorio que desea modificar: ";
                     cin >> accesorio_modificar;
@@ -279,13 +297,13 @@ int main() {
                         cin >> contenedor_accesorio;
                         cout << endl << "Su accesorio hace uso de un segundo tipo" << endl << "Si es de adaptacion indica el ambiente que adapta y si es de supervivencia indica si restaura energia o vida.";
                         cout << endl << "1.- Si" << endl << "2.- No" << endl;
-                        cin>> seleccion_accesorio;
+                        cin>> selecciones_accesorio;
                         
-                        if(seleccion_tipo_2 == 1) {
+                        if(selecciones_otro_tipo == 1) {
                             cout << endl << "ingrese el segundo tipo del accesorio: ";
                             cin>> tipo2_accesorio;
                         }
-                        else if(seleccion_tipo_2 == 2) {
+                        else if(selecciones_otro_tipo == 2) {
                             tipo2_accesorio = "No Tiene";
                         }
                         else {
@@ -296,16 +314,16 @@ int main() {
                         objetos[accesorio_modificar].Nombre = nuevo_accesorio;
                         objetos[accesorio_modificar].Tipo = tipo_accesorio;
                         objetos[accesorio_modificar].Valor = valor_accesorio;
-                        objetos[accesorio_modificar].Tipo2 = tipo2_accesorio;
+                        objetos[accesorio_modificar].Otro_Tipo = tipo2_accesorio;
                         objetos[accesorio_modificar].Energia = energia_accesorio;
                         objetos[accesorio_modificar].Contenedor = contenedor_accesorio;
                     } else {//Seleccion invalida
                         cout << "El numero que ha colocado no es valido" << endl << endl;
                     }
                 }
-                else if(seleccion_accesorio == 4){//volver al menu
+                else if(selecciones_accesorio == 4){//volver al menu
                     cout << endl;
-                    parte_accesorios = 0;
+                    opciones_accesorios = 0;
                 }
                 else {//Seleccion invalida
                 cout << endl << "El número que ha seleccionado es invalido" << endl << endl;
@@ -313,10 +331,10 @@ int main() {
                 }
     }}
             
-    //seleccion 3 Ambiente
+    //Opcion 3 Ambiente
                 
         else if(opcion == 3){
-            while(parte_ambiente ==1){
+            while(opciones_ambientes ==1){
                 int seleccion_ambiente;
                 cout << "Estos serán los ambientes donde tendra lugar la guerra: " << endl;
                 cout << " " << endl;
@@ -325,14 +343,19 @@ int main() {
                 }
                 cout << endl;
 
-                cout << "MENU DE AMBIENTES" << endl;
-                cout << "1.- Agregar Ambiente" << endl;
-                cout << "2.- Eliminar Ambiente" << endl;
-                cout << "3.- Modificar Ambiente" << endl;
-                cout << "4.- Volver" << endl << endl;
-                cout << "¿Qué acción quiere realizar?: ";
-                cin >> seleccion_ambiente;    
-                //seleccion 1 Agregar ambiente
+                cout << "╔══════════════════════════════════════╗" << endl;
+                cout << "║       ** MENU DE AMBIENTES **        ║" << endl;
+                cout << "║                                      ║" << endl;
+                cout << "║ 1. Agregar Ambiente                  ║" << endl;
+                cout << "║ 2. Eliminar Ambiente                 ║" << endl;
+                cout << "║ 3. Modificar Ambiente                ║" << endl;
+                cout << "║ 4. Volver                            ║" << endl;
+                cout << "╚══════════════════════════════════════╝" << endl;
+                cout << "¿Qué acción deseas realizar?: ";
+                cin>> seleccion_ambiente;
+                cout << endl << endl;
+                
+                //seleccion 1: Agregar ambiente
                 if(seleccion_ambiente == 1){
                 string nuevo_ambiente = "";
                 cout << "Ingrese el nombre del ambiente: ";
@@ -340,7 +363,7 @@ int main() {
                 lugares.push_back({nuevo_ambiente});
                    
                 }
-                //seleccion 2 Eliminar ambiente
+                //seleccion 2: Eliminar ambiente
                 else if(seleccion_ambiente == 2){
                     int ambiente_eliminar;
                     cout << "Ingrese el numero del ambiente que desea eliminar: ";
@@ -381,7 +404,7 @@ int main() {
                 //Seleccion 4 Volver
                 else if(seleccion_ambiente == 4) {
                     cout << endl;
-                    parte_ambiente = 0;
+                    opciones_ambientes = 0;
                 }
                 else {
                 cout << endl << "El número seleccionado es invalido" << endl << endl;
@@ -390,7 +413,7 @@ int main() {
 
                 }}
         else if(opcion == 4) {
-            cout << endl << "¡Hasta Luego Baby!";
+            cout << "Hasta luego";
             main = 2;
         }
         }
