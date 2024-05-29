@@ -1,4 +1,4 @@
-#include <iostream>
+include <iostream>
 #include <vector>
 #include <array>
 #include <string>
@@ -50,12 +50,9 @@ int main() {
     vector<Razas> razas;
     vector<Accesorios> objetos;
     vector<Ambiente> lugares;
-    vector<Jugador> Jugador1;
-    vector<Jugador> Jugador2;
-    vector<Jugador> Jugador3;
-    vector<Jugador> Jugador4;
-    vector<Jugador> Jugador5;
-    vector<Jugador> Jugador6;
+    vector<Jugador> Jugadores;
+    vector<Mochila> mochila;
+  
     
     /*RAZAS PREDETERMINADAS*/
     razas.push_back({"Andromedanos",80,100,"Andromeda","Desconocida"});
@@ -71,7 +68,18 @@ int main() {
     lugares.push_back({"Tierra"});
     lugares.push_back({"Andromeda"});
     lugares.push_back({"Georgia"});
-    
+
+
+    mochila.push_back({objetos[0]});
+    mochila.push_back({objetos[1]});
+    mochila.push_back({objetos[2]});
+
+    /*Jugadores predeterminados*/
+    Jugadores.push_back({"Steve",razas[0],mochila[0]});
+    Jugadores.push_back({"Alejandro",razas[1],mochila[1]});
+    Jugadores.push_back({"Andres",razas[2],mochila[2]});
+
+
     /*DECLARACION DE VARIABLES*/
     string nombre_primer_personaje;
     int main = 1;
@@ -84,6 +92,8 @@ int main() {
         int opciones_razas = 1;
         int opciones_accesorios = 1;
         int opciones_ambientes = 1;
+        int opciones_mochila =1;
+        int opciones_jugadores =1;
 
         cout << "INVASION EXTRATERRESTRE" << endl;
         cout << "ELABORADO POR: DIEGO MORENO, ANDRES VIERA Y XAVIER LUIS" << endl;
@@ -93,6 +103,8 @@ int main() {
         cout << "║ 1. Menú de razas                     ║" << endl;
         cout << "║ 2. Menú de accesorios                ║" << endl;
         cout << "║ 3. Menú de Ambientes                 ║" << endl;
+         cout <<"║ 4. Menu mochila                      ║" << endl;
+        cout << "║ 5. Menu jugadores                    ║" << endl;
         cout << "║ 4. Salir                             ║" << endl;
         cout << "╚══════════════════════════════════════╝" << endl;
         cout << "¿Qué acción deseas realizar?: " << endl;
@@ -100,7 +112,7 @@ int main() {
         
         //Selector de Opciones
         //Opcion invalida
-        if((opcion<1) or (opcion>4)) {
+        if((opcion=!1) or (opcion=!2) or (opcion=!3) or (opcion=!4)) {
             cout << "El número que ha seleccionado es invalido" << endl << endl;
         }
         //Opcion 1, razas
@@ -412,7 +424,57 @@ int main() {
 
 
                 }}
-        else if(opcion == 4) {
+
+        else if(opcion== 5){
+            while(opciones_jugadores==1){
+                 int seleccion_jugador;
+                 cout<<"Estos son los jugadores partcipantes:"<<endl;
+                 for(int i =0; i<Jugadores.size(); ++i){
+                    cout << i << ") " << Jugadores[i].Nombre << ", " << razas[i] << ", " << mochila[i]<<endl;
+                }
+                cout << "╔══════════════════════════════════════╗" << endl;
+                cout << "║       ** MENU DE JUGADORES **        ║" << endl;
+                cout << "║ 1. Agregar Jugador                   ║" << endl;
+                cout << "║ 2. Eliminar Jugador                  ║" << endl;
+                cout << "║ 3. Editar Jugador                    ║" << endl;
+                cout << "║ 4. Volver                            ║" << endl;
+                cout << "╚══════════════════════════════════════╝" << endl;
+                cout << "¿Qué acción deseas realizar?: ";
+                cin>>seleccion_jugador;
+                if(opcion==1){
+                    string nuevo_nombre_jugador = "";
+                    vector <Nuevamochila> mo_chila ;
+                    string raza ;
+
+                }
+            }
+        }
+        else if (opcion==4){
+            while(opciones_mochila==1){\
+              int seleccion_mochila_accesorio;
+              cout<<"Estos seran los accesrios que podra agregar a su mochila maximo 5"<<endl;
+              cout<<"                ";
+              for (int i=0; i<objetos.size(); ++i){
+                    cout << i << ") " << objetos[i].Nombre << ", " << objetos[i].Tipo << ", " ;
+                    cout << objetos[i].Valor << ", " << objetos[i].Otro_Tipo << ", " << objetos[i].Energia << ", " << objetos[i].Contenedor << endl;  
+                }
+                cout << endl << endl;
+                //Menu Accesorios
+                cout << "╔══════════════════════════════════════╗" << endl;
+                cout << "║       ** MENU DE MOCHILA **          ║" << endl;
+                cout << "║ 1. Ver mochila de cada jugador       ║" << endl;
+                cout << "║ 2. Volver                            ║" << endl;
+                cout << "╚══════════════════════════════════════╝" << endl;
+                cout << "¿Qué acción deseas realizar?: ";
+                cin>> seleccion_mochila_accesorio;
+                if (seleccion_mochila_accesorio==1){
+
+
+                }
+
+        
+                }
+        else if(opcion == 6) {
             cout << "Hasta luego";
             main = 2;
         }
